@@ -1,5 +1,4 @@
 body {
-    background-color: black;
     position: relative;
 }
 img {
@@ -10,7 +9,7 @@ img {
 
 section {
     position: absolute;
-    top: 25vh;
+    top: 20vh;
     width: 100%;
     height: 50vh;
     margin-right: auto;
@@ -20,7 +19,6 @@ section {
 div {
     margin-top: 35px;
     width: auto;
-    color: black;
     font-size: 50pt;
     text-align: center;
     text-shadow: 2px 1px #ffffff;
