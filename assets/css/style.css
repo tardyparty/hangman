@@ -1,5 +1,6 @@
 body {
     position: relative;
+    background-color: black;
 }
 img {
     position: relative;
@@ -9,17 +10,46 @@ img {
 
 section {
     position: absolute;
-    top: 20vh;
+    top: 5vh;
     width: 100%;
     height: 50vh;
     margin-right: auto;
     margin-left: auto;
 }
 
-div {
-    margin-top: 35px;
+.logo {
     width: auto;
-    font-size: 50pt;
+    font-size: 100pt;
     text-align: center;
-    text-shadow: 2px 1px #ffffff;
+    color: #ffffff;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px;
+}
+
+.gameStatus {
+    width: auto;
+    text-align: center;
+    font-size: 45pt;
+    color: #ffffff;
+    margin-top: 30px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px;
+}
+
+.gamePlay {
+    width: auto;
+    text-align: center;
+    color: #ffffff;
+    font-size: 35pt;
+    margin-top: 30px;
+    line-height: 1.25;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px;
+}
+
+#currentWord {
+    letter-spacing: 5px;
+}
+
+#tryAgain,
+#youWin,
+#gameOver {
+    display: none;
 }

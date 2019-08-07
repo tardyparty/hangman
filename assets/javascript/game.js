@@ -1,72 +1,138 @@
+// array of countries to choose form 
 var words = [
-    "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua",
-    "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain",
-    "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia",
-    "Bosnia", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi",
-    "Cabo Verde", "Cambodia", "Cameroon", "Canada", "Central African Republic", "Chad", "Chile",
-    "China", "Colombia", "Comoros", "Congo", "Costa Rica", "Cote d’Ivoire", "Croatia", "Cuba",
-    "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic",
-    "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia",
-    "Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "The Gambia", "Georgia",
-    "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana",
-    "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland",
-    "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati",
-    "North Korea", "South Korea", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon",
-    "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi",
-    "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius",
-    "Mexico", "Federated States of Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro",
-    "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand",
-    "Nicaragua", "Niger", "Nigeria", "North Macedonia", "Norway", "Oman", "Pakistan", "Palau",
-    "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", 
-    "Qatar", "Romania", "Russia", "Rwanda", "Saint Kitts and Nevis", "Saint Lucia", 
-    "Saint Vincent and the Grenadines", "Samoa", "San Marino", "Sao Tome and Principe",
-    "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovenia",
-    "Solomon Islands", "Somalia", "South Africa", "Spain", "Sri Lanka", "Sudan", "South Sudan",
-    "Suriname", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand",
-    "Togo", "Tonga", "Trinidad and Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda",
-    "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", 
-    "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"
+    "afghanistan", "albania", "algeria", "andorra", "angola", "antigua",
+    "argentina", "armenia", "australia", "austria", "azerbaijan", "bahamas", "bahrain",
+    "bangladesh", "barbados", "belarus", "belgium", "belize", "benin", "bhutan", "bolivia",
+    "bosnia", "botswana", "brazil", "brunei", "bulgaria", "burkina Faso", "burundi",
+    "cabo verde", "cambodia", "cameroon", "canada", "central African Republic", "chad", "chile",
+    "china", "colombia", "comoros", "congo", "costa Rica", "cote d’Ivoire", "croatia", "cuba",
+    "cyprus", "czech Republic", "denmark", "djibouti", "dominica", "dominican Republic",
+    "east Timor", "ecuador", "egypt", "el salvador", "equatorial guinea", "eritrea", "estonia",
+    "eswatini", "ethiopia", "Fiji", "Finland", "France", "gabon", "The gambia", "georgia",
+    "germany", "ghana", "greece", "grenada", "guatemala", "guinea", "guinea-Bissau", "guyana",
+    "haiti", "honduras", "hungary", "iceland", "india", "indonesia", "iran", "iraq", "ireland",
+    "israel", "italy", "jamaica", "japan", "jordan", "kazakhstan", "kenya", "kiribati",
+    "north korea", "south korea", "kosovo", "kuwait", "kyrgyzstan", "laos", "latvia", "lebanon",
+    "lesotho", "liberia", "libya", "liechtenstein", "lithuania", "luxembourg", "madagascar", "malawi",
+    "malaysia", "maldives", "mali", "malta", "marshall Islands", "mauritania", "mauritius",
+    "mexico", "Federated states of micronesia", "moldova", "monaco", "mongolia", "montenegro",
+    "morocco", "mozambique", "myanmar", "namibia", "nauru", "nepal", "netherlands", "new Zealand",
+    "nicaragua", "niger", "nigeria", "north macedonia", "norway", "oman", "pakistan", "palau",
+    "panama", "papua New Guinea", "paraguay", "peru", "philippines", "poland", "portugal", 
+    "qatar", "romania", "russia", "rwanda", "saint kitts and nevis", "saint lucia", 
+    "saint vincent and the grenadines", "samoa", "san Marino", "sao Tome and principe",
+    "saudi arabia", "senegal", "serbia", "seychelles", "sierra Leone", "singapore", "slovenia",
+    "solomon Islands", "somalia", "south Africa", "spain", "sri Lanka", "sudan", "south sudan",
+    "suriname", "sweden", "switzerland", "syria", "taiwan", "tajikistan", "tanzania", "thailand",
+    "togo", "tonga", "trinidad and tobago", "tunisia", "turkey", "turkmenistan", "tuvalu", "uganda",
+    "ukraine", "united arab emirates", "united kingdom", "united states", "uruguay", "uzbekistan", 
+    "vanuatu", "vatican City", "venezuela", "vietnam", "yemen", "zambia", "zimbabwe"
 ]
 
 // global variables 
-const lives = 10;
+const maxLives = 10;
 
-var guessesLetters = [];
+var guessedLetters = [];
+var currentWordIndex;
+var guessingWord = [];
+var remainingLives = 0;
+var started = false;
+var finished = false;
+var wins = 0;
 
-// generates random country from 'words'
-var randomWord = words[Math.floor(Math.random() * words.length)];
+//  functions for game play
 
-console.log(randomWord)
+function resetGame(){
+    // reset all variables from previous game
+    remainingLives = maxLives;
 
+    currentWordIndex = Math.floor(Math.random() * (words.length));
 
-for (i=0; i < randomWord.length; i++){
-    console.log("_")
+    guessedLetters = [];
+
+    guessingWord = [];
+
+    // reset a new word 
+    for (i=0; i < words[currentWordIndex].length; i++){
+        guessingWord.push("_");
+    }
+
+    document.getElementById("tryAgain").style.cssText= "display: none";
+    document.getElementById("gameOver").style.cssText = "display: none";
+    document.getElementById("youWin").style.cssText = "display: none";
+
+    updateDisplay();
 }
 
-var userGuess = event.key;
+function updateDisplay(){
+    // resets html page for new game
+    document.getElementById("totalWins").innerHTML = wins;
+    document.getElementById("currentWord").innerHTML = "";
+    for (var i = 0; i < guessingWord.length; i++) {
+        document.getElementById("currentWord").innerHTML += guessingWord[i];
+    }
+    document.getElementById("remainingLives").innerHTML = remainingLives;
+    document.getElementById("guessedLetters").innerHTML = guessedLetters;
+    if (remainingLives <= 0){
+        document.getElementById("gameOver").style.css = "display: block";
+        document.getElementById("tryAgain").style.css = "display: block";
+        finished = true;
+    }
+}
 
-console.log(userGuess)
+document.onkeydown = function(event){
+    // recieves users guess and checks if its valid
+    if (finished){
+        resetGame();
+        finished = false;
+    }
+    else {
+        if (event.keyCode >= 65 && event.keyCode <= 90){
+            userGuess(event.key.toLowerCase());
+        }
+    }
+}
 
+function checkLetter(letter){
+    var positions = [];
+    for (var i = 0; i < words[currentWordIndex].length; i++){
+        if (words[currentWordIndex][i] === letter){
+            positions.push(i);
+        }
+    }
 
-// to do 
+    if (positions.length <= 0){
+        remainingLives--;
+    }
+    else {
+        for (var i = 0; i < positions.length; i++){
+            guessingWord[positions[i]] = letter;
+        }  
+    }
+}
 
-// capture the users guess 
+function checkWin(){
+    if (guessingWord.indexOf("_") === -1){
+        document.getElementById("youWin").style.css = "display: block";
+        document.getElementById("tryAgain").style.css = "display: block";
+        wins++;
+        finished = true;
+    }
+}
 
-// compare user guess to word selected
+function userGuess (letter){
+    if (remainingLives > 0){
+        if (!started){
+            started = true;
+        }
+    }
+    if (guessedLetters.indexOf(letter) === -1) {
+        guessedLetters.push(letter);
+        checkLetter(letter);
+    }
 
-// display the random word as "_ _ _ _ _"
+    updateDisplay();
+    checkWin();
+}
 
-// do not display spaces as "_"
-
-// reveal correct guesses in display "_ m _ r _ _ _ "
-
-// display wrong guesses "Guesses: q z l b"
-
-// keep track of wins after a correct guess
-
-// display number of guesses remaining and count down
-
-// do not allow user to guess same letter twice
-
-// restart game after user wins or loses
-
+console.log(words[currentWordIndex])
