@@ -1,36 +1,36 @@
 // array of countries to choose form 
 var words = [
-    "afghanistan", "albania", "algeria", "andorra", "angola", "antigua",
-    "argentina", "armenia", "australia", "austria", "azerbaijan", "bahamas", "bahrain",
-    "bangladesh", "barbados", "belarus", "belgium", "belize", "benin", "bhutan", "bolivia",
-    "bosnia", "botswana", "brazil", "brunei", "bulgaria", "burkina Faso", "burundi",
-    "cabo verde", "cambodia", "cameroon", "canada", "central African Republic", "chad", "chile",
-    "china", "colombia", "comoros", "congo", "costa Rica", "cote d’Ivoire", "croatia", "cuba",
-    "cyprus", "czech Republic", "denmark", "djibouti", "dominica", "dominican Republic",
-    "east Timor", "ecuador", "egypt", "el salvador", "equatorial guinea", "eritrea", "estonia",
-    "eswatini", "ethiopia", "Fiji", "Finland", "France", "gabon", "The gambia", "georgia",
-    "germany", "ghana", "greece", "grenada", "guatemala", "guinea", "guinea-Bissau", "guyana",
-    "haiti", "honduras", "hungary", "iceland", "india", "indonesia", "iran", "iraq", "ireland",
-    "israel", "italy", "jamaica", "japan", "jordan", "kazakhstan", "kenya", "kiribati",
-    "north korea", "south korea", "kosovo", "kuwait", "kyrgyzstan", "laos", "latvia", "lebanon",
-    "lesotho", "liberia", "libya", "liechtenstein", "lithuania", "luxembourg", "madagascar", "malawi",
-    "malaysia", "maldives", "mali", "malta", "marshall Islands", "mauritania", "mauritius",
-    "mexico", "Federated states of micronesia", "moldova", "monaco", "mongolia", "montenegro",
-    "morocco", "mozambique", "myanmar", "namibia", "nauru", "nepal", "netherlands", "new Zealand",
-    "nicaragua", "niger", "nigeria", "north macedonia", "norway", "oman", "pakistan", "palau",
-    "panama", "papua New Guinea", "paraguay", "peru", "philippines", "poland", "portugal", 
-    "qatar", "romania", "russia", "rwanda", "saint kitts and nevis", "saint lucia", 
-    "saint vincent and the grenadines", "samoa", "san Marino", "sao Tome and principe",
-    "saudi arabia", "senegal", "serbia", "seychelles", "sierra Leone", "singapore", "slovenia",
-    "solomon Islands", "somalia", "south Africa", "spain", "sri Lanka", "sudan", "south sudan",
-    "suriname", "sweden", "switzerland", "syria", "taiwan", "tajikistan", "tanzania", "thailand",
-    "togo", "tonga", "trinidad and tobago", "tunisia", "turkey", "turkmenistan", "tuvalu", "uganda",
-    "ukraine", "united arab emirates", "united kingdom", "united states", "uruguay", "uzbekistan", 
-    "vanuatu", "vatican City", "venezuela", "vietnam", "yemen", "zambia", "zimbabwe"
+    "AFGHANISTAN", "ALBANIA", "ALGERIA", "ANDORRA", "ANGOLA", "ANTIGUA",
+    "ARGENTINA", "ARMENIA", "AUSTRALIA", "AUSTRIA", "AZERBAIJAN", "BAHAMAS", "BAHRAIN",
+    "BANGLADESH", "BARBADOS", "BELARUS", "BELGIUM", "BELIZE", "BENIN", "BHUTAN", "BOLIVIA",
+    "BOSNIA", "BOTSWANA", "BRAZIL", "BRUNEI", "BULGARIA", "BURKINA FASO", "BURUNDI",
+    "CABO VERDE", "CAMBODIA", "CAMEROON", "CANADA", "CENTRAL AFRICAN REpUBLIC", "CHAD", "CHILE",
+    "CHINA", "COLOMBIA", "COMOROS", "CONGO", "COSTA RICA", "COTE D IVOIRE", "CROATIA", "CUBA",
+    "CYPRUS", "CZECH REPUBLIC", "DENMARK", "DJIBOUTI", "DOMINICA", "DOMINICAN REPUBLIC",
+    "EAST TIMOR", "ECUADOR", "EGYPT", "EL SALVADOR", "EQUATORIAL GUINEA", "ERITREA", "ESTONIA",
+    "ESWATINI", "ETHIOPIA", "FIJI", "FINLAND", "FRANCE", "GABON", "THE GAMBIA", "GEORGIA",
+    "GERMANY", "GHANA", "GREECE", "GRENADA", "GUATEMALA", "GUINEA", "GUINEA BISSAU", "GUYANA",
+    "HAITI", "HONDURAS", "HUNGARY", "ICELAND", "INDIA", "INDONESIA", "IRAN", "IRAQ", "IRELAND",
+    "ISRAEL", "ITALY", "JAMAICA", "JAPAN", "JORDAN", "KAZAKHSTAN", "KENYA", "KIRIBATI",
+    "NORTH KOREA", "SOUTH KOREA", "KOSOVO", "KUWAIT", "KYRGYZSTAN", "LAOS", "LATVIA", "LEBANON",
+    "LESOTHO", "LIBERIA", "LIBYA", "LIECHTENSTEIN", "LITHUANIA", "LUXEMBOURG", "MADAGASCAR", "MALAWI",
+    "MALAYSIA", "MALDIVES", "MALI", "MALTA", "MARSHALL ISLANDS", "MAURITANIA", "MAURITIUS",
+    "MEXICO", "FEDERATED STATES OF MICRONESIA", "MOLDOVA", "MONACO", "MONGOLIA", "MONTENEGRO",
+    "MOROCCO", "MOZAMBIQUE", "MYANMAR", "NAMIBIA", "NAURU", "NEPAL", "NETHERLANDS", "NEW ZEALAND",
+    "NICARAGUA", "NIGER", "NIGERIA", "NORTH MACEDONIA", "NORWAY", "OMAN", "PAKISTAN", "PALAU",
+    "PANAMA", "PAPUA NEW GUINEA", "PARAGUAY", "PERU", "PHILIPPINES", "POLAND", "PORTUGAL", 
+    "QATAR", "ROMANIA", "RUSSIA", "RWANDA", "SAINT KITTS AND NEVIS", "SAINT LUCIA", 
+    "SAINT VINCENT AND THE GRENADINES", "SAMOA", "SAN MARINO", "SAO TOME AND PRINCIPE",
+    "SAUDI ARABIA", "SENEGAL", "SERBIA", "SEYCHELLES", "SIERRA LEONE", "SINGAPORE", "SLOVENIA",
+    "SOLOMON ISLANDS", "SOMALIA", "SOUTH AFRICA", "SPAIN", "SRI LANKA", "SUDAN", "SOUTH SUDAN",
+    "SURINAME", "SWEDEN", "SWITZERLAND", "SYRIA", "TAIWAN", "TAJIKISTAN", "TANZANIA", "THAILAND",
+    "TOGO", "TONGA", "TRINIDAD AND TOBAGO", "TUNISIA", "TURKEY", "TURKMENISTAN", "TUVALU", "UGANDA",
+    "UKRAINE", "UNITED ARAB EMIRATES", "UNITED KINGDOM", "UNITED STATES", "URUGUAY", "UZBEKISTAN", 
+    "VANUATU", "VATICAN CITY", "VENEZUELA", "VIETNAM", "YEMEN", "ZAMBIA", "ZIMBABWE"
 ]
 
 // global variables 
-const maxLives = 10;
+const maxLives = 12;
 
 var guessedLetters = [];
 var currentWordIndex;
@@ -39,6 +39,8 @@ var remainingLives = 0;
 var started = false;
 var finished = false;
 var wins = 0;
+
+console.log(guessingWord)
 
 //  functions for game play
 
@@ -57,30 +59,47 @@ function resetGame(){
         guessingWord.push("_");
     }
 
-    document.getElementById("tryAgain").style.cssText= "display: none";
-    document.getElementById("gameOver").style.cssText = "display: none";
-    document.getElementById("youWin").style.cssText = "display: none";
+    // checks for spaces " "
+    var positions = [];
+    for (var i = 0; i < words[currentWordIndex].length; i++){
+        if (words[currentWordIndex][i] === " "){
+            positions.push(i);
+        }
+    }
+
+    // pastes spaces " "
+    for (var i = 0; i < positions.length; i++){
+        guessingWord[positions[i]] = " ";
+    }
+
+    document.getElementById("tryAgain").style.display = "none";
+    document.getElementById("gameOver").style.display = "none";
+    document.getElementById("youWin").style.display = "none";
 
     updateDisplay();
 }
 
 function updateDisplay(){
     // resets html page for new game
+    capLetters = guessedLetters.join(" ");
     document.getElementById("totalWins").innerHTML = wins;
     document.getElementById("currentWord").innerHTML = "";
     for (var i = 0; i < guessingWord.length; i++) {
         document.getElementById("currentWord").innerHTML += guessingWord[i];
     }
     document.getElementById("remainingLives").innerHTML = remainingLives;
-    document.getElementById("guessedLetters").innerHTML = guessedLetters;
+    document.getElementById("guessedLetters").innerHTML = capLetters;
     if (remainingLives <= 0){
-        document.getElementById("gameOver").style.css = "display: block";
-        document.getElementById("tryAgain").style.css = "display: block";
+        document.getElementById("gameOver").style.display = "block";
+        document.getElementById("tryAgain").style.display = "block";
         finished = true;
     }
 }
 
 document.onkeydown = function(event){
+    // removes start text 
+    document.getElementById("firstStart").style.display = "none";
+
     // recieves users guess and checks if its valid
     if (finished){
         resetGame();
@@ -88,7 +107,7 @@ document.onkeydown = function(event){
     }
     else {
         if (event.keyCode >= 65 && event.keyCode <= 90){
-            userGuess(event.key.toLowerCase());
+            userGuess(event.key.toUpperCase());
         }
     }
 }
@@ -113,14 +132,14 @@ function checkLetter(letter){
 
 function checkWin(){
     if (guessingWord.indexOf("_") === -1){
-        document.getElementById("youWin").style.css = "display: block";
-        document.getElementById("tryAgain").style.css = "display: block";
+        document.getElementById("youWin").style.display = "block";
+        document.getElementById("tryAgain").style.display = "block";
         wins++;
         finished = true;
     }
 }
 
-function userGuess (letter){
+function userGuess(letter) {
     if (remainingLives > 0){
         if (!started){
             started = true;
@@ -134,5 +153,3 @@ function userGuess (letter){
     updateDisplay();
     checkWin();
 }
-
-console.log(words[currentWordIndex])

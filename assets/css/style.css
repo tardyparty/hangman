@@ -48,8 +48,17 @@ section {
     letter-spacing: 5px;
 }
 
+#firstStart,
 #tryAgain,
 #youWin,
 #gameOver {
     display: none;
+}
+
+#gameOver {
+    color: red;
+}
+
+#youWin {
+    color: green;
 }
