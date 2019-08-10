@@ -92,6 +92,7 @@ function updateDisplay(){
     if (remainingLives <= 0){
         document.getElementById("gameOver").style.display = "block";
         document.getElementById("tryAgain").style.display = "block";
+        document.getElementById("currentWord").innerHTML = words[currentWordIndex];
         finished = true;
     }
 }
